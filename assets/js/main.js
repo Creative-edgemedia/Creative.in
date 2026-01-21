@@ -214,3 +214,34 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+
+// contactus page sent to whatsapp
+
+function sendToWhatsApp(event) {
+  event.preventDefault(); // Prevent form from submitting normally
+
+  // Get form values
+  var name = document.getElementById('nameInput').value;
+  var email = document.getElementById('emailInput').value;
+  var phone = document.getElementById('numberInput').value;
+  var subject = document.getElementById('subjectInput').value;
+  var message = document.getElementById('messageInput').value;
+
+  // Build WhatsApp message
+  var whatsappMessage = 
+    "Hello!%0A" +
+    "Name: " + encodeURIComponent(name) + "%0A" +
+    "Email: " + encodeURIComponent(email) + "%0A" +
+    "Phone: " + encodeURIComponent(phone) + "%0A" +
+    "Subject: " + encodeURIComponent(subject) + "%0A" +
+    "Message: " + encodeURIComponent(message);
+
+  // Replace with your WhatsApp number in international format (no +)
+  var whatsappNumber = "917022116161"; // e.g., India: 91XXXXXXXXXX
+
+  // Open WhatsApp link
+  var whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + whatsappMessage;
+  window.open(whatsappURL, "_blank");
+}
